@@ -1,0 +1,163 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "Features";
+const description = "Explore the powerful features of EI POS. Offline-first selling, multi-branch inventory management, customer debt tracking, and real-time analytics.";
+---
+
+<BaseLayout title={title} description={description}>
+  {/* Header */}
+  <header class="absolute inset-x-0 top-0 z-50">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+      <div class="flex lg:flex-1">
+        <a href="/" class="-m-1.5 p-1.5 flex items-center gap-2">
+          <div class="h-8 w-8 rounded bg-blue-600 flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+          </div>
+          <span class="font-bold text-xl tracking-tight text-gray-900">EI POS</span>
+        </a>
+      </div>
+      <div class="hidden lg:flex lg:gap-x-12">
+        <a href="/features" class="text-sm font-semibold leading-6 text-blue-600">Features</a>
+        <a href="/pricing" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition">Pricing</a>
+        <a href="/blog" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition">Blog</a>
+      </div>
+      <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4">
+        <a href="https://app.yourdomain.com/login" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 py-2">Log in</a>
+        <a href="https://app.yourdomain.com/signup" class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 transition">Get Started</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="pt-24 pb-16 sm:pt-32 sm:pb-24">
+    {/* Page Title */}
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 text-center mb-16 sm:mb-24">
+      <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+        Built for the realities of retail.
+      </h1>
+      <p class="mt-6 text-lg leading-8 text-gray-600 max-w-2xl mx-auto">
+        We didn't just build another cash register. We built an intelligent engine that handles bad internet, tracks who owes you money, and manages your inventory across cities.
+      </p>
+    </div>
+
+    {/* Feature 1: Offline First (Left Text, Right Image) */}
+    <div class="overflow-hidden bg-white py-16 sm:py-24">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-16 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center">
+          <div class="lg:pr-8 lg:pt-4">
+            <div class="lg:max-w-lg">
+              <h2 class="text-base font-semibold leading-7 text-blue-600">Unstoppable Selling</h2>
+              <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">100% Offline-First Architecture</p>
+              <p class="mt-6 text-lg leading-8 text-gray-600">
+                Never lose a sale because the internet went down. Our POS terminal lives entirely in your browser's local memory. 
+              </p>
+              <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+                <div class="relative pl-9">
+                  <dt class="inline font-semibold text-gray-900">
+                    <svg class="absolute left-1 top-1 h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                    Instant Checkout.
+                  </dt>
+                  <dd class="inline"> Because it doesn't wait for server responses, scanning and charging items happens instantly.</dd>
+                </div>
+                <div class="relative pl-9">
+                  <dt class="inline font-semibold text-gray-900">
+                    <svg class="absolute left-1 top-1 h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+                    Auto-Sync Engine.
+                  </dt>
+                  <dd class="inline"> When your connection returns, the system silently syncs all offline receipts to the cloud in the background.</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+          <img src="/images/feature-offline.png" alt="Offline Mode UI" class="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0" onerror="this.src='https://placehold.co/1200x800/f3f4f6/6b7280?text=Offline+Sync+Demo'" />
+        </div>
+      </div>
+    </div>
+
+    {/* Feature 2: Multi-Branch (Left Image, Right Text) */}
+    <div class="overflow-hidden bg-gray-50 py-16 sm:py-24">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-16 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center">
+          <div class="order-2 lg:order-1">
+            <img src="/images/feature-branches.png" alt="Multi-Branch Dashboard" class="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem]" onerror="this.src='https://placehold.co/1200x800/f3f4f6/6b7280?text=Multi-Branch+View'" />
+          </div>
+          <div class="order-1 lg:order-2 lg:pl-8 lg:pt-4">
+            <div class="lg:max-w-lg">
+              <h2 class="text-base font-semibold leading-7 text-blue-600">Enterprise Control</h2>
+              <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Multi-Branch Management</p>
+              <p class="mt-6 text-lg leading-8 text-gray-600">
+                Manage one store or fifty from a single dashboard. Keep your product catalog global, but allow for local adjustments.
+              </p>
+              <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+                <div class="relative pl-9">
+                  <dt class="inline font-semibold text-gray-900">
+                    <svg class="absolute left-1 top-1 h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    Local Price Overrides.
+                  </dt>
+                  <dd class="inline"> Set a master price for a product, but override it easily for stores in more expensive locations.</dd>
+                </div>
+                <div class="relative pl-9">
+                  <dt class="inline font-semibold text-gray-900">
+                    <svg class="absolute left-1 top-1 h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                    Consolidated Reports.
+                  </dt>
+                  <dd class="inline"> View total organization performance, or drill down into the P&L of a specific branch with one click.</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Feature 3: Debt Ledger (Left Text, Right Image) */}
+    <div class="overflow-hidden bg-white py-16 sm:py-24">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-16 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center">
+          <div class="lg:pr-8 lg:pt-4">
+            <div class="lg:max-w-lg">
+              <h2 class="text-base font-semibold leading-7 text-blue-600">Cashflow Clarity</h2>
+              <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Customer Debt Ledger</p>
+              <p class="mt-6 text-lg leading-8 text-gray-600">
+                Stop using notebooks to track who owes you money. Our built-in debt ledger ties directly into your financial reports.
+              </p>
+              <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+                <div class="relative pl-9">
+                  <dt class="inline font-semibold text-gray-900">
+                    <svg class="absolute left-1 top-1 h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                    Partial Payments.
+                  </dt>
+                  <dd class="inline"> Customers can pay what they have today, and the system automatically calculates the remaining debt balance.</dd>
+                </div>
+                <div class="relative pl-9">
+                  <dt class="inline font-semibold text-gray-900">
+                    <svg class="absolute left-1 top-1 h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H4a2 2 0 00-2 2v6a2 2 0 002 2h3a2 2 0 002-2zm0 0V9a2 2 0 012-2h3a2 2 0 012 2v10m-2 0h2a2 2 0 002-2V9a2 2 0 00-2-2h-3a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                    Accurate Cash Flow.
+                  </dt>
+                  <dd class="inline"> Our financial reports separate your Accrual Revenue from your Actual Cash Collected, keeping your books perfectly balanced.</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+          <img src="/images/feature-debt.png" alt="Debt Management UI" class="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0" onerror="this.src='https://placehold.co/1200x800/f3f4f6/6b7280?text=Debt+Ledger'" />
+        </div>
+      </div>
+    </div>
+  </main>
+
+  {/* CTA */}
+  <div class="bg-blue-600">
+    <div class="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+        Stop fighting your POS system.
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl text-lg leading-8 text-blue-100">
+        Try EI POS free for 14 days and see the difference a modern tool makes.
+      </p>
+      <div class="mt-8 flex justify-center gap-4">
+        <a href="https://app.yourdomain.com/signup" class="rounded-lg bg-white px-6 py-3 text-sm font-semibold text-blue-600 shadow-sm hover:bg-gray-50 transition">Start Free Trial</a>
+        <a href="/pricing" class="rounded-lg px-6 py-3 text-sm font-semibold text-white border border-white/20 hover:bg-white/10 transition">See Pricing</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

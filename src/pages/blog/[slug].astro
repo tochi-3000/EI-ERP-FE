@@ -1,0 +1,77 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// 1. Generate a static route for every post in the 'blog' collection
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  return blogEntries.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+// 2. Extract the specific post data passed from getStaticPaths
+const { entry } = Astro.props;
+
+// 3. Render the Markdown into HTML
+const { Content } = await entry.render();
+
+// Format Date
+const formattedDate = entry.data.publishDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+{/* Pass SEO data to the BaseLayout. We set type to 'article' for optimal OpenGraph sharing */}
+<BaseLayout 
+  title={entry.data.title} 
+  description={entry.data.description} 
+  image={entry.data.coverImage.src}
+  type="article"
+>
+  {/* Simple Return Header */}
+  <header class="py-6 px-6 lg:px-8 max-w-4xl mx-auto">
+    <a href="/blog" class="text-sm font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-2">
+      &larr; Back to Blog
+    </a>
+  </header>
+
+  <article class="py-12 sm:py-16">
+    <div class="mx-auto max-w-3xl px-6 lg:px-8">
+      
+      {/* Article Header */}
+      <div class="mb-10 text-center">
+        <div class="flex items-center justify-center gap-x-4 text-sm mb-6">
+          <time datetime={entry.data.publishDate.toISOString()} class="text-gray-500">
+            {formattedDate}
+          </time>
+          <span class="rounded-full bg-blue-50 px-3 py-1.5 font-medium text-blue-600">
+            {entry.data.tags[0]}
+          </span>
+        </div>
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl mb-6">
+          {entry.data.title}
+        </h1>
+        <p class="text-gray-600 font-medium">By {entry.data.author}</p>
+      </div>
+
+      {/* Hero Image */}
+      <div class="mb-16">
+        <img 
+          src={entry.data.coverImage.src} 
+          alt={entry.data.coverImageAlt} 
+          class="w-full rounded-2xl shadow-xl object-cover"
+        />
+      </div>
+
+      {/* Markdown Content rendered via Tailwind Typography plugin (prose class) */}
+      <div class="prose prose-lg prose-blue mx-auto text-gray-700">
+        <Content />
+      </div>
+
+    </div>
+  </article>
+</BaseLayout>

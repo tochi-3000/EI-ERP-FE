@@ -1,0 +1,94 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Fetch all blog posts, excluding drafts
+const allPosts = await getCollection('blog', ({ data }) => {
+  return data.isDraft !== true;
+});
+
+// Sort posts by newest first
+const sortedPosts = allPosts.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+
+const title = "EI POS Blog | Retail Insights & Updates";
+const description = "Learn how to scale your retail business, manage multi-branch inventory, and implement offline-first systems.";
+---
+
+<BaseLayout title={title} description={description}>
+  {/* Header Navigation */}
+  <header class="absolute inset-x-0 top-0 z-50">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+      <div class="flex lg:flex-1">
+        <a href="/" class="-m-1.5 p-1.5 flex items-center gap-2">
+          <div class="h-8 w-8 rounded bg-blue-600 flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+          </div>
+          <span class="font-bold text-xl tracking-tight text-gray-900">EI POS</span>
+        </a>
+      </div>
+      <div class="hidden lg:flex lg:gap-x-12">
+        <a href="/features" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition">Features</a>
+        <a href="/pricing" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition">Pricing</a>
+        <a href="/blog" class="text-sm font-semibold leading-6 text-blue-600">Blog</a>
+      </div>
+      <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4">
+        <a href="https://app.yourdomain.com/login" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 py-2">Log in</a>
+        <a href="https://app.yourdomain.com/signup" class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 transition">Get Started</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="py-24 sm:py-32">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center">
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">The Retail Command Center</h1>
+        <p class="mt-2 text-lg leading-8 text-gray-600">Actionable advice for scaling your multi-branch empire.</p>
+      </div>
+
+      <div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+        {sortedPosts.length === 0 ? (
+           <p class="text-gray-500 italic col-span-3 text-center">No posts published yet. Check back soon!</p>
+        ) : (
+          sortedPosts.map(post => (
+            <article class="flex flex-col items-start justify-between bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
+              <a href={`/blog/${post.slug}`} class="w-full">
+                <img 
+                  src={post.data.coverImage.src} 
+                  alt={post.data.coverImageAlt} 
+                  class="aspect-[16/9] w-full object-cover bg-gray-100 sm:aspect-[2/1] lg:aspect-[3/2]" 
+                />
+              </a>
+              <div class="p-6">
+                <div class="flex items-center gap-x-4 text-xs">
+                  <time datetime={post.data.publishDate.toISOString()} class="text-gray-500">
+                    {post.data.publishDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                  </time>
+                  <span class="relative z-10 rounded-full bg-blue-50 px-3 py-1.5 font-medium text-blue-600">
+                    {post.data.tags[0]}
+                  </span>
+                </div>
+                <div class="group relative">
+                  <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-blue-600 transition-colors">
+                    <a href={`/blog/${post.slug}`}>
+                      <span class="absolute inset-0"></span>
+                      {post.data.title}
+                    </a>
+                  </h3>
+                  <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{post.data.description}</p>
+                </div>
+                <div class="relative mt-6 flex items-center gap-x-4">
+                  <div class="text-sm leading-6">
+                    <p class="font-semibold text-gray-900">
+                      <span class="absolute inset-0"></span>
+                      {post.data.author}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))
+        )}
+      </div>
+    </div>
+  </main>
+</BaseLayout>
