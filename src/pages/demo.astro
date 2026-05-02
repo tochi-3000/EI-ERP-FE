@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "Watch Demo | EI POS";
+const description = "See how EI POS works. Watch a quick demo of our offline-first point of sale system, multi-branch management, and advanced analytics in action.";
+---
+
+<BaseLayout title={title} description={description}>
+  {/* --- HEADER NAV --- */}
+  <header class="absolute inset-x-0 top-0 z-50">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+      <div class="flex lg:flex-1">
+        <a href="/" class="-m-1.5 p-1.5 flex items-center gap-2">
+          <div class="h-8 w-8 rounded bg-blue-600 flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+          </div>
+          <span class="font-bold text-xl tracking-tight text-gray-900">EI POS</span>
+        </a>
+      </div>
+      <div class="hidden lg:flex lg:gap-x-12">
+        <a href="/features" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition">Features</a>
+        <a href="/pricing" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition">Pricing</a>
+        <a href="/download" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition">Download</a>
+        <a href="/blog" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition">Blog</a>
+      </div>
+      <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4">
+        <a href="https://app.yourdomain.com/login" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 py-2">Log in</a>
+        <a href="https://app.yourdomain.com/signup" class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 transition">Get Started</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="pt-24 pb-16 sm:pt-32 sm:pb-24 bg-gray-50 min-h-screen">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      
+      {/* --- HERO / INTRO SECTION --- */}
+      <div class="mx-auto max-w-3xl text-center mb-16">
+        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl mb-6">
+          See <span class="text-blue-600">EI POS</span> in action
+        </h1>
+        <p class="text-lg leading-8 text-gray-600 mx-auto">
+          Take a 3-minute guided tour of our cash register, multi-branch management interface, and offline-first capabilities.
+        </p>
+      </div>
+
+      {/* --- VIDEO PLAYER MOCKUP --- */}
+      <div class="mx-auto max-w-5xl">
+        <div class="relative rounded-2xl bg-gray-900 p-2 sm:p-4 ring-1 ring-gray-900/10 shadow-2xl overflow-hidden group">
+          
+          {/* Decorative Glow */}
+          <div class="absolute -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
+            <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"></div>
+          </div>
+          
+          <div class="aspect-video bg-gray-800 rounded-xl relative overflow-hidden flex items-center justify-center shadow-inner cursor-pointer">
+            {/* Mockup Background Image */}
+            <img src="/images/dashboard-mockup.png" alt="Demo Video Placeholder" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity duration-300" onerror="this.src='https://placehold.co/1920x1080/1f2937/4b5563?text=Product+Tour+Video'" />
+            
+            {/* Play Button Overlay */}
+            <div class="relative z-10 w-20 h-20 bg-blue-600/90 text-white rounded-full flex items-center justify-center group-hover:bg-blue-500 group-hover:scale-110 transition-all duration-300 shadow-xl backdrop-blur-sm">
+              <svg class="w-10 h-10 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+            </div>
+            
+            {/* Fake progress bar at bottom */}
+            <div class="absolute bottom-0 inset-x-0 h-1.5 bg-gray-900/50">
+               <div class="h-full bg-blue-600 w-1/3 rounded-r-full"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* --- FEATURE HIGHLIGHTS (BELOW VIDEO) --- */}
+      <div class="mx-auto max-w-5xl mt-24">
+        <h3 class="text-2xl font-bold tracking-tight text-gray-900 text-center mb-12">What you'll learn in this demo:</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center">
+             <div class="h-12 w-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mb-4">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+             </div>
+             <h4 class="text-lg font-bold text-gray-900 mb-2">Lightning Fast Sales</h4>
+             <p class="text-sm text-gray-600 text-balance">See how quickly cashiers can scan items, apply discounts, and process payments without delays.</p>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center">
+             <div class="h-12 w-12 rounded-full bg-green-100 text-green-600 flex items-center justify-center mb-4">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+             </div>
+             <h4 class="text-lg font-bold text-gray-900 mb-2">Offline Resilience</h4>
+             <p class="text-sm text-gray-600 text-balance">Watch the system effortlessly switch to offline mode and sync data automatically when internet is restored.</p>
+          </div>
+
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center">
+             <div class="h-12 w-12 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center mb-4">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H4a2 2 0 00-2 2v6a2 2 0 002 2h3a2 2 0 002-2zm0 0V9a2 2 0 012-2h3a2 2 0 012 2v10m-2 0h2a2 2 0 002-2V9a2 2 0 00-2-2h-3a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+             </div>
+             <h4 class="text-lg font-bold text-gray-900 mb-2">Real-time Analytics</h4>
+             <p class="text-sm text-gray-600 text-balance">Explore the dashboard where branch managers track inventory, shift performances, and debt ledgers.</p>
+          </div>
+        </div>
+      </div>
+
+      {/* --- CALL TO ACTION --- */}
+      <div class="mx-auto max-w-4xl mt-24 text-center bg-blue-600 rounded-3xl p-10 sm:p-16 shadow-2xl">
+        <h2 class="text-3xl font-bold tracking-tight text-white mb-4">Ready to try it yourself?</h2>
+        <p class="text-lg text-blue-100 mb-10 max-w-2xl mx-auto">Get full access to all features for 14 days. No credit card required. See exactly why expanding retail chains choose us.</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="https://app.yourdomain.com/signup" class="rounded-xl bg-white px-8 py-4 text-base font-bold text-blue-600 shadow-sm hover:bg-gray-50 hover:scale-105 transition-all text-center w-full sm:w-auto">
+            Start 14-Day Free Trial
+          </a>
+          <a href="/pricing" class="rounded-xl bg-blue-700 px-8 py-4 text-base font-bold text-white shadow-sm hover:bg-blue-800 transition-all text-center w-full sm:w-auto">
+            View Pricing Plans
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</BaseLayout>

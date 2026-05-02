@@ -1,0 +1,224 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "Download Apps | EI POS";
+const description = "Download the Everyday Intelligence POS native desktop terminal for Windows and macOS, or get the mobile app for iOS and Android.";
+
+// --- Fetch latest release from the public GitHub mirror ---
+const GITHUB_REPO = "tochi-3000/EI-ERP-FE";
+const API_URL = `https://api.github.com/repos/${GITHUB_REPO}/releases/latest`;
+
+let windowsExeUrl: string | null = null;
+let windowsMsiUrl: string | null = null;
+let macOsUrl: string | null = null;
+let releaseVersion: string | null = null;
+let releaseDate: string | null = null;
+let releasePageUrl: string | null = null;
+
+try {
+  const res = await fetch(API_URL, {
+    headers: {
+      "Accept": "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2022-11-28",
+    },
+  });
+
+  if (res.ok) {
+    const release = await res.json();
+    releaseVersion = release.tag_name ?? null;
+    releasePageUrl = release.html_url ?? null;
+
+    if (release.published_at) {
+      releaseDate = new Date(release.published_at).toLocaleDateString("en-US", {
+        year: "numeric", month: "long", day: "numeric",
+      });
+    }
+
+    for (const asset of release.assets ?? []) {
+      const name: string = (asset.name as string).toLowerCase();
+      const url: string = asset.browser_download_url;
+
+      if (name.endsWith("x64-setup.exe") || (name.endsWith(".exe") && !windowsExeUrl)) {
+        windowsExeUrl = url;
+      } else if (name.endsWith(".msi")) {
+        windowsMsiUrl = url;
+      } else if (name.endsWith(".dmg")) {
+        macOsUrl = url;
+      }
+    }
+  }
+} catch (e) {
+  console.warn("Failed to fetch GitHub release:", e);
+}
+
+// Prefer .exe installer; fall back to .msi
+const windowsUrl = windowsExeUrl ?? windowsMsiUrl;
+---
+
+<BaseLayout title={title} description={description}>
+  {/* Header */}
+  <header class="absolute inset-x-0 top-0 z-50">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+      <div class="flex lg:flex-1">
+        <a href="/" class="-m-1.5 p-1.5 flex items-center gap-2">
+          <div class="h-8 w-8 rounded bg-blue-600 flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+          </div>
+          <span class="font-bold text-xl tracking-tight text-gray-900">EI POS</span>
+        </a>
+      </div>
+      <div class="hidden lg:flex lg:gap-x-12">
+        <a href="/features" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition">Features</a>
+        <a href="/pricing" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition">Pricing</a>
+        <a href="/download" class="text-sm font-semibold leading-6 text-blue-600">Download</a>
+        <a href="/blog" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition">Blog</a>
+      </div>
+      <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4">
+        <a href="https://app.yourdomain.com/login" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 py-2">Log in</a>
+        <a href="https://app.yourdomain.com/signup" class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 transition">Get Started</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="pt-24 pb-16 sm:pt-32 sm:pb-24 bg-gray-50 min-h-screen">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8 text-center mb-16">
+      <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl mb-6">
+        Take your POS everywhere.
+      </h1>
+      <p class="text-lg leading-8 text-gray-600 max-w-2xl mx-auto">
+        Install our native desktop terminal for blazing-fast thermal printing, and download the mobile app to scan barcodes directly from your phone.
+      </p>
+    </div>
+
+    <div class="mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8 px-6 lg:px-8">
+      
+      {/* DESKTOP APPS */}
+      <div class="bg-white rounded-3xl p-8 shadow-xl ring-1 ring-gray-900/5 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-full -z-10"></div>
+        
+        <div class="h-14 w-14 rounded-2xl bg-blue-600 flex items-center justify-center mb-8 shadow-lg">
+          <svg class="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+        </div>
+        
+        <div class="flex items-center gap-3 mb-1">
+          <h2 class="text-2xl font-bold text-gray-900">Desktop Terminal</h2>
+          {releaseVersion && (
+            <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-blue-100 text-blue-700">{releaseVersion}</span>
+          )}
+        </div>
+        {releaseDate && (
+          <p class="text-xs text-gray-400 mb-3">Released {releaseDate}</p>
+        )}
+        <p class="text-gray-500 mb-8">The ultimate cash register experience. Direct ESC/POS thermal printing and heavy-duty offline caching.</p>
+
+        <div class="space-y-4">
+          {/* Windows Download */}
+          {windowsUrl ? (
+            <a href={windowsUrl} class="group flex items-center justify-between w-full p-4 rounded-xl border-2 border-gray-100 hover:border-blue-600 hover:bg-blue-50 transition-all">
+              <div class="flex items-center gap-4">
+                <svg class="h-6 w-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24"><path d="M2 3.841l8.533-1.161V11.5H2V3.841zM11.602 2.5l10.398-1.5v10.5H11.602V2.5zM2 12.5h8.533v7.659L2 18.998V12.5zm9.602 0H22v9.5l-10.398-1.5V12.5z"/></svg>
+                <div class="text-left">
+                  <h4 class="font-bold text-gray-900">Windows (64-bit)</h4>
+                  <p class="text-xs text-gray-500">Requires Windows 10 or 11</p>
+                </div>
+              </div>
+              <svg class="h-5 w-5 text-gray-400 group-hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+            </a>
+          ) : (
+            <div class="flex items-center justify-between w-full p-4 rounded-xl border-2 border-dashed border-gray-200 opacity-60 cursor-not-allowed">
+              <div class="flex items-center gap-4">
+                <svg class="h-6 w-6 text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M2 3.841l8.533-1.161V11.5H2V3.841zM11.602 2.5l10.398-1.5v10.5H11.602V2.5zM2 12.5h8.533v7.659L2 18.998V12.5zm9.602 0H22v9.5l-10.398-1.5V12.5z"/></svg>
+                <div class="text-left">
+                  <h4 class="font-bold text-gray-500">Windows (64-bit)</h4>
+                  <p class="text-xs text-gray-400">Unavailable — check back soon</p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* macOS Download */}
+          {macOsUrl ? (
+            <a href={macOsUrl} class="group flex items-center justify-between w-full p-4 rounded-xl border-2 border-gray-100 hover:border-gray-900 hover:bg-gray-50 transition-all">
+              <div class="flex items-center gap-4">
+                <svg class="h-6 w-6 text-gray-900" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.04c-.66.86-1.54 1.46-2.46 1.42-.16-1.02.32-2.04.98-2.76.62-.68 1.54-1.12 2.38-1.18.18 1.06-.28 1.94-.9 2.52zM15.54 14.86c-.08-2.4 2.06-3.56 2.14-3.62-1.12-1.64-2.86-1.86-3.48-1.88-1.48-.14-2.92.88-3.68.88-.78 0-1.96-.86-3.18-.84-1.58.02-3.04.92-3.86 2.36-1.66 2.88-.42 7.14 1.2 9.48.8 1.14 1.74 2.42 3 2.38 1.2-.06 1.66-.8 3.12-.8 1.44 0 1.86.8 3.14.78 1.3-.02 2.12-1.16 2.9-2.3 1.04-1.52 1.46-3 1.48-3.08-.04-.02-2.72-1.04-2.78-3.36z"/></svg>
+                <div class="text-left">
+                  <h4 class="font-bold text-gray-900">macOS (Apple Silicon &amp; Intel)</h4>
+                  <p class="text-xs text-gray-500">Requires macOS 11.0 or later</p>
+                </div>
+              </div>
+              <svg class="h-5 w-5 text-gray-400 group-hover:text-gray-900" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+            </a>
+          ) : (
+            <div class="flex items-center justify-between w-full p-4 rounded-xl border-2 border-dashed border-gray-200 opacity-60 cursor-not-allowed">
+              <div class="flex items-center gap-4">
+                <svg class="h-6 w-6 text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.04c-.66.86-1.54 1.46-2.46 1.42-.16-1.02.32-2.04.98-2.76.62-.68 1.54-1.12 2.38-1.18.18 1.06-.28 1.94-.9 2.52zM15.54 14.86c-.08-2.4 2.06-3.56 2.14-3.62-1.12-1.64-2.86-1.86-3.48-1.88-1.48-.14-2.92.88-3.68.88-.78 0-1.96-.86-3.18-.84-1.58.02-3.04.92-3.86 2.36-1.66 2.88-.42 7.14 1.2 9.48.8 1.14 1.74 2.42 3 2.38 1.2-.06 1.66-.8 3.12-.8 1.44 0 1.86.8 3.14.78 1.3-.02 2.12-1.16 2.9-2.3 1.04-1.52 1.46-3 1.48-3.08-.04-.02-2.72-1.04-2.78-3.36z"/></svg>
+                <div class="text-left">
+                  <h4 class="font-bold text-gray-500">macOS (Apple Silicon &amp; Intel)</h4>
+                  <p class="text-xs text-gray-400">Not yet available for this release</p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* View all releases */}
+          {releasePageUrl && (
+            <a href={releasePageUrl} target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-1.5 text-xs text-gray-400 hover:text-blue-600 transition pt-1">
+              <svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              View all releases on GitHub
+            </a>
+          )}
+        </div>
+      </div>
+
+      {/* MOBILE APPS */}
+      <div class="bg-white rounded-3xl p-8 shadow-xl ring-1 ring-gray-900/5 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-green-50 rounded-bl-full -z-10"></div>
+        
+        <div class="h-14 w-14 rounded-2xl bg-green-500 flex items-center justify-center mb-8 shadow-lg">
+          <svg class="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+        </div>
+        
+        <h2 class="text-2xl font-bold text-gray-900 mb-2">Mobile Scanner App</h2>
+        <p class="text-gray-500 mb-8">Turn your smartphone into a barcode scanner. Sell to customers from anywhere on the shop floor.</p>
+
+        <div class="space-y-4">
+          {/* Android Download */}
+          <a href="#" class="group flex items-center justify-between w-full p-4 rounded-xl border-2 border-gray-100 hover:border-green-500 hover:bg-green-50 transition-all">
+            <div class="flex items-center gap-4">
+              <svg class="h-6 w-6 text-green-500" fill="currentColor" viewBox="0 0 24 24"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993.0004.5511-.4482.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503c-1.4361-.6471-3.1554-1.0182-5.1368-1.0182-1.9814 0-3.7007.3711-5.1368 1.0182l-2.0223-3.503a.4158.4158 0 00-.5676-.1521.4154.4154 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3432-4.1021-2.6889-7.5743-6.1185-9.4396"/></svg>
+              <div class="text-left">
+                <h4 class="font-bold text-gray-900">Android App (.APK)</h4>
+                <p class="text-xs text-gray-500">Android 9.0 or higher</p>
+              </div>
+            </div>
+            <svg class="h-5 w-5 text-gray-400 group-hover:text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+          </a>
+
+          {/* iOS Notice */}
+          <div class="flex items-center justify-between w-full p-4 rounded-xl border-2 border-gray-100 bg-gray-50 opacity-70">
+            <div class="flex items-center gap-4">
+              <svg class="h-6 w-6 text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.04c-.66.86-1.54 1.46-2.46 1.42-.16-1.02.32-2.04.98-2.76.62-.68 1.54-1.12 2.38-1.18.18 1.06-.28 1.94-.9 2.52zM15.54 14.86c-.08-2.4 2.06-3.56 2.14-3.62-1.12-1.64-2.86-1.86-3.48-1.88-1.48-.14-2.92.88-3.68.88-.78 0-1.96-.86-3.18-.84-1.58.02-3.04.92-3.86 2.36-1.66 2.88-.42 7.14 1.2 9.48.8 1.14 1.74 2.42 3 2.38 1.2-.06 1.66-.8 3.12-.8 1.44 0 1.86.8 3.14.78 1.3-.02 2.12-1.16 2.9-2.3 1.04-1.52 1.46-3 1.48-3.08-.04-.02-2.72-1.04-2.78-3.36z"/></svg>
+              <div class="text-left">
+                <h4 class="font-bold text-gray-500">iOS App Store</h4>
+                <p class="text-xs text-gray-400">Coming Q3 2026</p>
+              </div>
+            </div>
+            <span class="text-[10px] font-bold uppercase tracking-wider bg-gray-200 text-gray-500 px-2 py-1 rounded-md">Pending</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    {/* Setup Instruction Alert */}
+    <div class="mx-auto max-w-5xl px-6 lg:px-8 mt-12">
+      <div class="rounded-2xl bg-blue-50 border border-blue-100 p-6 flex items-start gap-4">
+        <svg class="h-6 w-6 text-blue-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <div>
+          <h4 class="font-bold text-blue-900">Need help setting up?</h4>
+          <p class="text-sm text-blue-800 mt-1">Make sure you have created your store account on the web first. The desktop and mobile apps require you to log in with your existing store credentials to synchronize your inventory properly.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

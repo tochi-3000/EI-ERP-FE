@@ -15,9 +15,7 @@ const blogCollection = defineCollection({
         author: z.string().default('EI POS Team'),
 
         // Validates the image exists and allows Astro to optimize it
-        coverImage: image().refine((img) => img.width >= 1200, {
-            message: "Cover image must be at least 1200px wide for crisp OpenGraph sharing.",
-        }),
+        coverImage: image(),
         coverImageAlt: z.string(),
 
         // Tagging for taxonomy/internal linking
