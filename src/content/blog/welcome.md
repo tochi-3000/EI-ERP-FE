@@ -9,7 +9,7 @@ tags: ["POS Architecture", "Business"]
 isDraft: false
 ---
 
-Welcome to the EI POS Blog!
+Welcome to the SELL EVERYDAY Blog!
 
 If you run a retail store, a pharmacy, or a multi-branch supermarket, you already know the pain of a cloud-based point-of-sale system when the internet goes down. Customers are waiting, lines are backing up, and your cashiers are forced to write down sales on pieces of paper.
 
@@ -22,12 +22,12 @@ This results in:
 - **Employee Frustration:** Your staff bears the brunt of angry customers.
 
 ### Enter the Offline-First Engine
-We built EI POS differently. Using advanced browser technologies, your entire product catalog is cached locally on your device.
+We built SELL EVERYDAY differently. Using advanced browser technologies, your entire product catalog is cached locally on your device.
 
 When you scan a barcode, the system doesn't ping a server in another country—it reads it straight from memory in milliseconds.
 
 - **Sell anywhere:** Internet goes out? Keep selling. The system doesn't even blink.
-- **Auto-Sync:** The second your connection is restored, EI POS silently pushes all those offline receipts to the cloud.
+- **Auto-Sync:** The second your connection is restored, SELL EVERYDAY silently pushes all those offline receipts to the cloud.
 - **Peace of mind:** Your data is safe, your lines keep moving, and your inventory remains 100% accurate.
 
 Stay tuned to this blog as we share more updates on multi-branch management, debt tracking, and retail analytics!

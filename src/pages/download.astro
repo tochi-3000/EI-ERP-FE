@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const title = "Download Apps | EI POS";
+const title = "Download Apps | SELL EVERYDAY";
 const description = "Download the Everyday Intelligence POS native desktop terminal for Windows and macOS, or get the mobile app for iOS and Android.";
 
 // --- Fetch latest release from the public GitHub mirror ---
@@ -57,28 +57,6 @@ const windowsUrl = windowsExeUrl ?? windowsMsiUrl;
 
 <BaseLayout title={title} description={description}>
   {/* Header */}
-  <header class="absolute inset-x-0 top-0 z-50">
-    <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
-      <div class="flex lg:flex-1">
-        <a href="/" class="-m-1.5 p-1.5 flex items-center gap-2">
-          <div class="h-8 w-8 rounded bg-blue-600 flex items-center justify-center">
-            <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-          </div>
-          <span class="font-bold text-xl tracking-tight text-gray-900">EI POS</span>
-        </a>
-      </div>
-      <div class="hidden lg:flex lg:gap-x-12">
-        <a href="/features" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition">Features</a>
-        <a href="/pricing" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition">Pricing</a>
-        <a href="/download" class="text-sm font-semibold leading-6 text-blue-600">Download</a>
-        <a href="/blog" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 transition">Blog</a>
-      </div>
-      <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4">
-        <a href="https://app.yourdomain.com/login" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600 py-2">Log in</a>
-        <a href="https://app.yourdomain.com/signup" class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 transition">Get Started</a>
-      </div>
-    </nav>
-  </header>
 
   <main class="pt-24 pb-16 sm:pt-32 sm:pb-24 bg-gray-50 min-h-screen">
     <div class="mx-auto max-w-7xl px-6 lg:px-8 text-center mb-16">
@@ -220,5 +198,11 @@ const windowsUrl = windowsExeUrl ?? windowsMsiUrl;
         </div>
       </div>
     </div>
+    </div>
+
+    {/* --- FOOTER --- */}
+
   </main>
 </BaseLayout>
+
+
