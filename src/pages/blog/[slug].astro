@@ -1,12 +1,12 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 // 1. Generate a static route for every post in the 'blog' collection
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
   return blogEntries.map(entry => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.id },
     props: { entry },
   }));
 }
@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 
 // 3. Render the Markdown into HTML
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 
 // Format Date
 const formattedDate = entry.data.publishDate.toLocaleDateString('en-US', {

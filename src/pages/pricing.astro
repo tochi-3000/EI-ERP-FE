@@ -23,6 +23,25 @@ const description = "Simple, transparent pricing for retail businesses of all si
         </p>
       </div>
 
+      {/* Deployment Tabs (Cloud vs License) */}
+      <div class="mt-8 flex items-center justify-center">
+        <div class="inline-flex items-center justify-center p-1 bg-gray-200/80 rounded-xl shadow-inner">
+          <button 
+            id="btn-cloud" 
+            class="px-8 py-3 text-sm font-bold rounded-lg transition-all duration-200 bg-white text-blue-600 shadow-sm ring-1 ring-gray-900/5"
+          >
+            Cloud Hosted (SaaS)
+          </button>
+          <button 
+            id="btn-license" 
+            class="px-8 py-3 text-sm font-semibold rounded-lg transition-all duration-200 text-gray-500 hover:text-gray-900 hover:bg-gray-100/50"
+          >
+            In-Premise License
+          </button>
+        </div>
+      </div>
+
+      <div id="panel-cloud" class="transition-opacity duration-300">
       {/* Monthly / Yearly Toggle */}
       <div class="mt-12 flex justify-center items-center gap-4">
         <span class="text-sm font-bold text-gray-900" id="label-monthly">Monthly</span>
@@ -131,8 +150,81 @@ const description = "Simple, transparent pricing for retail businesses of all si
             </p>
          </div>
          <div class="mt-8 flex items-center gap-x-6 lg:mt-0 lg:flex-shrink-0">
-            <a href="mailto:sales@eipayson.com" class="rounded-xl bg-white px-8 py-3.5 text-sm font-bold text-gray-900 shadow-sm hover:bg-gray-100 transition-colors">Contact Sales Support</a>
+            <a href="/contact" class="rounded-xl bg-white px-8 py-3.5 text-sm font-bold text-gray-900 shadow-sm hover:bg-gray-100 transition-colors">Contact Sales Support</a>
          </div>
+      </div>
+      </div> {/* End panel-cloud */}
+
+      {/* --- PANEL 2: IN-PREMISE LICENSE (HIDDEN BY DEFAULT) --- */}
+      <div id="panel-license" class="hidden transition-opacity duration-300">
+        {/* Title for In-Premise */}
+        <div class="mt-12 text-center">
+          <p class="text-xl font-medium text-gray-600">One-time payment. Host your own data. LAN Supported.</p>
+        </div>
+
+        {/* --- PRICING GRID (3 TIERS) --- */}
+        <div class="isolate mx-auto mt-12 grid max-w-md grid-cols-1 gap-6 sm:mt-16 lg:max-w-4xl lg:grid-cols-3">
+          
+          {/* Tier 1: Small Business */}
+          <div class="rounded-3xl p-8 ring-1 ring-gray-200 bg-white shadow-sm flex flex-col justify-between hover:shadow-lg transition-shadow">
+            <div>
+              <h3 class="text-lg font-bold leading-8 text-gray-900">Small Business Plan</h3>
+              <p class="mt-2 text-sm leading-6 text-gray-500">Perfect for growing offline operations.</p>
+              <div class="mt-6 flex flex-col">
+                <span class="text-4xl font-extrabold tracking-tight text-gray-900">₦75,000</span>
+                <span class="text-sm font-semibold leading-6 text-gray-500">one-time</span>
+              </div>
+              <ul role="list" class="mt-8 space-y-3 text-sm leading-6 text-gray-700 font-medium">
+                <li class="flex gap-x-3"><CheckIcon /> 2 Users</li>
+                <li class="flex gap-x-3"><CheckIcon /> 2 LAN Connections</li>
+                <li class="flex gap-x-3"><CheckIcon /> Unlimited Products</li>
+                <li class="flex gap-x-3"><CheckIcon /> Unlimited Outlets</li>
+              </ul>
+            </div>
+            <a href="/contact" class="mt-8 block w-full rounded-lg px-3 py-2.5 text-center text-sm font-semibold leading-6 text-blue-600 ring-1 ring-inset ring-blue-200 hover:ring-blue-300 hover:bg-blue-50 transition-colors">Contact Sales</a>
+          </div>
+
+          {/* Tier 2: Pro */}
+          <div class="rounded-3xl p-8 ring-2 ring-blue-600 bg-white shadow-xl flex flex-col justify-between relative transform lg:-translate-y-4">
+            <div class="absolute top-0 right-6 -translate-y-1/2 transform rounded-full bg-gradient-to-r from-blue-600 to-blue-500 px-3 py-1 text-xs font-bold leading-5 text-white shadow-sm uppercase tracking-wider">
+              Most Popular
+            </div>
+            <div>
+              <h3 class="text-lg font-bold leading-8 text-blue-600">Pro Plan</h3>
+              <p class="mt-2 text-sm leading-6 text-gray-500">For mid-sized chains needing more connections.</p>
+              <div class="mt-6 flex flex-col">
+                <span class="text-4xl font-extrabold tracking-tight text-gray-900">₦150,000</span>
+                <span class="text-sm font-semibold leading-6 text-gray-500">one-time</span>
+              </div>
+              <ul role="list" class="mt-8 space-y-3 text-sm leading-6 text-gray-900 font-bold">
+                <li class="flex gap-x-3"><CheckIcon /> 10 Users</li>
+                <li class="flex gap-x-3"><CheckIcon /> 10 LAN Connections</li>
+                <li class="flex gap-x-3"><CheckIcon /> Unlimited Products</li>
+                <li class="flex gap-x-3"><CheckIcon /> Unlimited Outlets</li>
+              </ul>
+            </div>
+            <a href="/contact" class="mt-8 block w-full rounded-lg bg-blue-600 px-3 py-3 text-center text-sm font-bold leading-6 text-white shadow-md hover:bg-blue-700 hover:shadow-lg transition-all active:scale-95">Contact Sales</a>
+          </div>
+
+          {/* Tier 3: Unlimited */}
+          <div class="rounded-3xl p-8 ring-1 ring-gray-200 bg-white shadow-sm flex flex-col justify-between hover:shadow-lg transition-shadow">
+            <div>
+              <h3 class="text-lg font-bold leading-8 text-gray-900">Unlimited Plan</h3>
+              <p class="mt-2 text-sm leading-6 text-gray-500">Unrestricted access for large enterprises.</p>
+              <div class="mt-6 flex flex-col">
+                <span class="text-4xl font-extrabold tracking-tight text-gray-900">₦300,000</span>
+                <span class="text-sm font-semibold leading-6 text-gray-500">one-time</span>
+              </div>
+              <ul role="list" class="mt-8 space-y-3 text-sm leading-6 text-gray-700 font-medium">
+                <li class="flex gap-x-3 text-blue-700"><CheckIcon /> Unlimited Users</li>
+                <li class="flex gap-x-3 text-blue-700"><CheckIcon /> Unlimited LAN Connections</li>
+                <li class="flex gap-x-3 text-blue-700"><CheckIcon /> Unlimited Products</li>
+                <li class="flex gap-x-3 text-blue-700"><CheckIcon /> Unlimited Outlets</li>
+              </ul>
+            </div>
+            <a href="/contact" class="mt-8 block w-full rounded-lg px-3 py-2.5 text-center text-sm font-semibold leading-6 text-blue-600 ring-1 ring-inset ring-blue-200 hover:ring-blue-300 hover:bg-blue-50 transition-colors">Contact Sales</a>
+          </div>
+        </div>
       </div>
 
       {/* --- ALL FEATURES INCLUDED SECTION --- */}
@@ -296,6 +388,42 @@ const description = "Simple, transparent pricing for retail businesses of all si
         });
       });
     }
+
+    // Tab Logic for Pricing Panels
+    const btnCloud = document.getElementById('btn-cloud');
+    const btnLicense = document.getElementById('btn-license');
+    const panelCloud = document.getElementById('panel-cloud');
+    const panelLicense = document.getElementById('panel-license');
+
+    const activeClasses = ['bg-white', 'text-blue-600', 'shadow-sm', 'ring-1', 'ring-gray-900/5', 'font-bold'];
+    const inactiveClasses = ['text-gray-500', 'hover:text-gray-900', 'hover:bg-gray-100/50', 'font-semibold'];
+
+    const setTab = (tab: 'cloud' | 'license') => {
+      if (!btnCloud || !btnLicense || !panelCloud || !panelLicense) return;
+
+      if (tab === 'cloud') {
+        panelCloud.classList.remove('hidden');
+        panelLicense.classList.add('hidden');
+        
+        btnCloud.classList.add(...activeClasses);
+        btnCloud.classList.remove(...inactiveClasses);
+        
+        btnLicense.classList.remove(...activeClasses);
+        btnLicense.classList.add(...inactiveClasses);
+      } else {
+        panelLicense.classList.remove('hidden');
+        panelCloud.classList.add('hidden');
+        
+        btnLicense.classList.add(...activeClasses);
+        btnLicense.classList.remove(...inactiveClasses);
+        
+        btnCloud.classList.remove(...activeClasses);
+        btnCloud.classList.add(...inactiveClasses);
+      }
+    };
+
+    btnCloud?.addEventListener('click', () => setTab('cloud'));
+    btnLicense?.addEventListener('click', () => setTab('license'));
   });
 </script>
 
