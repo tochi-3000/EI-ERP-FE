@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "Account Deletion | SELL EVERYDAY";
+const description = "Instructions for deleting your SELL EVERYDAY account and data.";
+---
+
+<BaseLayout title={title} description={description}>
+  <main class="py-24 sm:py-32 bg-gray-50 min-h-screen">
+    <div class="mx-auto max-w-3xl px-6 lg:px-8">
+      <div class="bg-white rounded-3xl p-8 sm:p-12 shadow-sm ring-1 ring-gray-900/5">
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900 mb-8">Account Deletion Request</h1>
+        
+        <div class="prose prose-blue max-w-none text-gray-600">
+          <p class="text-lg">If you no longer wish to use SELL EVERYDAY and want to permanently delete your account and all associated data, please follow the steps below.</p>
+          
+          <div class="bg-red-50 border-l-4 border-red-500 p-5 my-8 rounded-r-lg">
+            <h3 class="text-red-800 font-bold m-0 mb-2">Warning: Irreversible Action</h3>
+            <p class="text-red-700 text-sm m-0">Deleting your account will permanently erase all your sales data, inventory records, and customer information from our servers. This action cannot be undone.</p>
+          </div>
+
+          <h2 class="text-xl font-bold text-gray-900 mt-10 mb-5">Steps to Delete Your Account</h2>
+          
+          <ol class="list-decimal pl-5 space-y-4 text-gray-700 marker:text-gray-400 marker:font-bold">
+            <li class="pl-2"><strong>Log into your Admin Dashboard:</strong> Access your SELL EVERYDAY account from a web browser or the mobile app.</li>
+            <li class="pl-2"><strong>Navigate to Settings:</strong> Click on the settings gear icon in the main navigation menu.</li>
+            <li class="pl-2"><strong>Go to Account Settings:</strong> Select the "Account Profile" tab.</li>
+            <li class="pl-2"><strong>Initiate Deletion:</strong> Scroll to the bottom of the page and click the red "Delete Account" button.</li>
+            <li class="pl-2"><strong>Verify Your Identity:</strong> You will be prompted to enter your password and a confirmation code sent to your registered email address to verify the request.</li>
+            <li class="pl-2"><strong>Confirm Deletion:</strong> Once verified, confirm the deletion. Your data will be permanently removed.</li>
+          </ol>
+
+          <h2 class="text-xl font-bold text-gray-900 mt-12 mb-4">Need Help?</h2>
+          <p>If you are unable to access your account or need assistance with the deletion process, please email our support team directly at <a href="mailto:support@sell-everyday-pos.app" class="text-blue-600 font-semibold hover:underline">support@sell-everyday-pos.app</a> with the subject line "Account Deletion Request".</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

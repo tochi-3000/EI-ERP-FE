@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "Privacy Policy | SELL EVERYDAY";
+const description = "Our privacy policy and how we handle your data.";
+---
+
+<BaseLayout title={title} description={description}>
+  <main class="py-24 sm:py-32 bg-gray-50 min-h-screen">
+    <div class="mx-auto max-w-3xl px-6 lg:px-8">
+      <div class="bg-white rounded-3xl p-8 sm:p-12 shadow-sm ring-1 ring-gray-900/5">
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900 mb-8">Privacy Policy</h1>
+        
+        <div class="prose prose-blue max-w-none text-gray-600 space-y-6">
+          <p class="text-sm text-gray-500">Last updated: July 22, 2026</p>
+          
+          <div>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">1. Information We Collect</h2>
+            <p>We only collect the information necessary to provide you with our POS services. This includes account details, transaction data, and basic usage statistics to improve our software.</p>
+          </div>
+          
+          <div>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">2. How We Use Your Data</h2>
+            <p>Your data is used strictly to power your Point of Sale system, sync across devices, and generate your business reports. We do not sell your personal or business data to third parties.</p>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">3. Data Security</h2>
+            <p>We employ industry-standard security measures to protect your data. All communications are encrypted, and cloud data backups are securely stored.</p>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-bold text-gray-900 mb-3">4. Contact Us</h2>
+            <p>If you have any questions about this Privacy Policy, please <a href="/contact" class="text-blue-600 font-semibold hover:underline">contact us</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
