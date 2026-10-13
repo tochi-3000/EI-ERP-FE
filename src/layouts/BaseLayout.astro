@@ -12,6 +12,7 @@ interface Props {
   image?: string;
   canonicalURL?: string | URL;
   type?: 'website' | 'article';
+  schema?: Record<string, any>;
 }
 
 const {
@@ -20,10 +21,71 @@ const {
   image = '/images/default-og-image.jpg', // Fallback social image
   canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url.origin),
   type = 'website',
+  schema,
 } = Astro.props;
 
 // Ensure title is suffixed with the brand name for consistency
 const formattedTitle = `${title} | SELL EVERYDAY System`;
+
+// Structured Data (JSON-LD) for Google Knowledge Graph & AI Overviews (SGE)
+const siteUrl = Astro.site ? Astro.site.toString().replace(/\/$/, '') : 'https://sell-everyday-pos.app';
+const baseSchemaGraph: any[] = [
+  {
+    "@type": "Organization",
+    "@id": `${siteUrl}/#organization`,
+    "name": "Sell Everyday",
+    "alternateName": ["Sell Everyday POS", "Everyday Intelligence POS", "Everyday Intelligence"],
+    "url": siteUrl,
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${siteUrl}/favicon.svg`
+    },
+    "description": "Offline-first Point of Sale (POS) and inventory control software engineered for modern retail businesses, supermarkets, and pharmacies in Nigeria.",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+2348100053846",
+      "contactType": "sales & support",
+      "areaServed": "NG",
+      "availableLanguage": "English"
+    }
+  },
+  {
+    "@type": "SoftwareApplication",
+    "@id": `${siteUrl}/#software`,
+    "name": "Sell Everyday POS",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web, Windows, Android",
+    "description": "The offline-first cloud POS system built for Nigerian retail. High-speed barcode checkouts, multi-branch control, debt ledgers, and zero network dependency.",
+    "publisher": {
+      "@id": `${siteUrl}/#organization`
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "NGN",
+      "lowPrice": "3000",
+      "highPrice": "300000",
+      "offerCount": "7"
+    }
+  },
+  {
+    "@type": "WebSite",
+    "@id": `${siteUrl}/#website`,
+    "url": siteUrl,
+    "name": "Sell Everyday POS",
+    "publisher": {
+      "@id": `${siteUrl}/#organization`
+    }
+  }
+];
+
+if (schema) {
+  baseSchemaGraph.push(schema);
+}
+
+const fullSchema = {
+  "@context": "https://schema.org",
+  "@graph": baseSchemaGraph
+};
 ---
 
 <!doctype html>
@@ -61,6 +123,9 @@ const formattedTitle = `${title} | SELL EVERYDAY System`;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Schema.org JSON-LD for Google Knowledge Graph & AI Overviews -->
+    <script type="application/ld+json" set:html={JSON.stringify(fullSchema)} />
   </head>
   <body class="bg-gray-50 text-gray-900 antialiased flex flex-col min-h-screen">
     <Navbar />
