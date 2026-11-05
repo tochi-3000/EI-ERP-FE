@@ -1,0 +1,616 @@
+---
+// PRODUCTION SAFEGUARDS:
+// 1. Strict Legal Coverage: Dual-model licensing (Cloud SaaS + In-Premise) reflecting SELL EVERYDAY's real architecture.
+// 2. SEO & Schema Validation: Injects JSON-LD WebPage schema with legal document metadata for search engine indexing.
+// 3. Accessibility & Usability: Semantic HTML with direct anchor IDs, sticky table of contents, and responsive mobile nav.
+// 4. Defensive Disclaimers: Explicit clauses covering offline synchronization latency, cashier negligence, and hardware compatibility.
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "Terms of Service";
+const description = "Terms of Service governing the use of SELL EVERYDAY Point of Sale software, cloud sync services, and in-premise licensing by Everyday Intelligence.";
+
+const lastUpdated = "November 5, 2026";
+const effectiveDate = "November 5, 2026";
+
+const sections = [
+  { id: "acceptance", title: "1. Agreement to Terms" },
+  { id: "eligibility", title: "2. Eligibility & Merchant Representation" },
+  { id: "services", title: "3. Services Provided & Dual Deployment Models" },
+  { id: "account-security", title: "4. Account Registration & Staff Access Controls" },
+  { id: "offline-sync", title: "5. Offline-First Operations & Sync Protocol" },
+  { id: "hardware-network", title: "6. Hardware, Peripherals & Local Environment" },
+  { id: "billing-subscriptions", title: "7. Subscriptions, In-Premise Fees & Taxes" },
+  { id: "trial-cancellation", title: "8. Free Trials, Cancellations & Refund Policy" },
+  { id: "merchant-data", title: "9. Merchant Data Ownership & Usage Rights" },
+  { id: "acceptable-use", title: "10. Acceptable Use & Prohibited Conduct" },
+  { id: "intellectual-property", title: "11. Intellectual Property & License Grant" },
+  { id: "sla-backups", title: "12. Service Availability, Maintenance & Data Retention" },
+  { id: "disclaimers-liability", title: "13. Disclaimer of Warranties & Liability Caps" },
+  { id: "indemnification", title: "14. Merchant Indemnification" },
+  { id: "governing-law", title: "15. Governing Law & Dispute Resolution" },
+  { id: "modifications-contact", title: "16. Modifications & Contact Information" },
+];
+
+const siteUrl = "https://sell-everyday-pos.app";
+const pageSchema = {
+  "@type": "WebPage",
+  "@id": `${siteUrl}/terms/#webpage`,
+  "url": `${siteUrl}/terms`,
+  "name": `${title} | SELL EVERYDAY System`,
+  "description": description,
+  "inLanguage": "en-US",
+  "datePublished": "2026-01-01",
+  "dateModified": "2026-11-05",
+  "isPartOf": {
+    "@id": `${siteUrl}/#website`
+  },
+  "about": {
+    "@id": `${siteUrl}/#software`
+  }
+};
+---
+
+<BaseLayout title={title} description={description} schema={pageSchema}>
+  <div class="py-16 sm:py-24 bg-gray-50 min-h-screen">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      
+      {/* Breadcrumb Navigation */}
+      <nav class="flex items-center space-x-2 text-xs font-medium text-gray-500 mb-8" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-blue-600 transition-colors">Home</a>
+        <span class="text-gray-400">/</span>
+        <span class="text-gray-400">Legal</span>
+        <span class="text-gray-400">/</span>
+        <span class="text-gray-900 font-semibold" aria-current="page">Terms of Service</span>
+      </nav>
+
+      {/* Hero Header */}
+      <div class="border-b border-gray-200 pb-10 mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold uppercase tracking-wider mb-4">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+          Legal Terms & Merchant Agreement
+        </div>
+        <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
+          Terms of Service
+        </h1>
+        <p class="mt-4 text-base sm:text-lg text-gray-600 max-w-3xl leading-relaxed">
+          These Terms of Service constitute a legally binding agreement between <strong>Everyday Intelligence Ltd.</strong> and the business or individual utilizing the SELL EVERYDAY Point of Sale software, cloud synchronization services, and related applications.
+        </p>
+        <div class="mt-6 flex flex-wrap items-center gap-6 text-xs text-gray-500 font-medium">
+          <span class="flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            Effective Date: {effectiveDate}
+          </span>
+          <span class="flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+            Last Updated: {lastUpdated}
+          </span>
+          <span class="flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Applicable to: Cloud SaaS &amp; In-Premise Deployments
+          </span>
+        </div>
+      </div>
+
+      {/* Quick Summary / Highlights Box */}
+      <div class="mb-14 rounded-2xl bg-blue-50/70 border border-blue-200/80 p-6 sm:p-8 shadow-sm">
+        <div class="flex items-start gap-4">
+          <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-base font-bold text-blue-950 uppercase tracking-wide">
+              Key Highlights at a Glance
+            </h2>
+            <p class="mt-1 text-xs text-blue-800">
+              This summary provides an operational overview. The numbered legal clauses below govern your legal relationship with Everyday Intelligence.
+            </p>
+            <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm text-gray-700">
+              <div class="flex items-start gap-2.5">
+                <span class="text-blue-600 font-bold mt-0.5">•</span>
+                <span><strong>Data Ownership:</strong> You retain complete ownership of all your store catalogs, sales receipts, customer lists, and financial ledgers. We do not sell your data.</span>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <span class="text-blue-600 font-bold mt-0.5">•</span>
+                <span><strong>Offline Sync Responsibility:</strong> SELL EVERYDAY functions without internet, but you must periodically connect terminals to the internet to ensure cloud synchronization across your branches.</span>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <span class="text-blue-600 font-bold mt-0.5">•</span>
+                <span><strong>Credential Security:</strong> Merchants are strictly accountable for maintaining staff PINs, cashier shifts, and supervisor permissions.</span>
+              </div>
+              <div class="flex items-start gap-2.5">
+                <span class="text-blue-600 font-bold mt-0.5">•</span>
+                <span><strong>Subscription Terms:</strong> 14-day free trials require no card. Monthly and annual plans renew automatically until cancelled via the admin dashboard.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content Layout with Sticky Sidebar */}
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        
+        {/* Mobile Quick-Jump Navigation */}
+        <div class="lg:hidden col-span-1">
+          <details class="bg-white rounded-2xl p-4 border border-gray-200 shadow-sm">
+            <summary class="font-bold text-gray-900 cursor-pointer flex items-center justify-between text-sm">
+              <span>Table of Contents (Jump to Section)</span>
+              <svg class="w-4 h-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <nav class="mt-4 pt-3 border-t border-gray-100 flex flex-col space-y-2 text-xs">
+              {sections.map((item) => (
+                <a href={`#${item.id}`} class="text-gray-600 hover:text-blue-600 py-1 transition-colors">
+                  {item.title}
+                </a>
+              ))}
+            </nav>
+          </details>
+        </div>
+
+        {/* Legal Text Body */}
+        <article class="lg:col-span-8 space-y-12 text-gray-700 leading-relaxed">
+          
+          {/* Section 1 */}
+          <section id="acceptance" class="scroll-mt-28 bg-white rounded-3xl p-8 sm:p-10 shadow-sm ring-1 ring-gray-900/5">
+            <h2 class="text-2xl font-bold text-gray-900 tracking-tight mb-4 flex items-center gap-3">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-100 text-blue-700 text-sm font-bold flex items-center justify-center">1</span>
+              Agreement to Terms
+            </h2>
+            <div class="space-y-4 text-sm sm:text-base leading-7">
+              <p>
+                These Terms of Service ("<strong>Terms</strong>", "<strong>Agreement</strong>") are entered into by and between <strong>Everyday Intelligence Ltd.</strong> ("<strong>Everyday Intelligence</strong>", "<strong>Company</strong>", "<strong>we</strong>", "<strong>us</strong>", or "<strong>our</strong>"), operating the <strong>SELL EVERYDAY</strong> brand, and the person, company, or legal entity registering for or using our software ("<strong>Customer</strong>", "<strong>Merchant</strong>", "<strong>you</strong>", or "<strong>your</strong>").
+              </p>
+              <p>
+                By downloading, installing, accessing, creating an account at <a href="https://app.sell-everyday-pos.app" class="text-blue-600 underline font-medium">app.sell-everyday-pos.app</a>, or operating the SELL EVERYDAY Point of Sale client software on any desktop, mobile, tablet, or web terminal, you acknowledge that you have read, understood, and agree to be bound by all provisions of this Agreement, as well as our <a href="/privacy" class="text-blue-600 underline font-medium">Privacy Policy</a>.
+              </p>
+              <div class="rounded-xl bg-amber-50 border-l-4 border-amber-500 p-4 text-amber-900 text-xs sm:text-sm">
+                <strong>Important Legal Notice:</strong> If you are entering into this Agreement on behalf of a retail store, supermarket, pharmacy, partnership, or limited liability company, you warrant that you have full legal authority to bind that commercial entity to these Terms. If you do not agree to all terms herein, you must immediately cease all access and uninstall any installed SELL EVERYDAY software components.
+              </div>
+            </div>
+          </section>
+
+          {/* Section 2 */}
+          <section id="eligibility" class="scroll-mt-28 bg-white rounded-3xl p-8 sm:p-10 shadow-sm ring-1 ring-gray-900/5">
+            <h2 class="text-2xl font-bold text-gray-900 tracking-tight mb-4 flex items-center gap-3">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-100 text-blue-700 text-sm font-bold flex items-center justify-center">2</span>
+              Eligibility &amp; Merchant Representation
+            </h2>
+            <div class="space-y-4 text-sm sm:text-base leading-7">
+              <p>
+                To utilize the SELL EVERYDAY system, you represent and warrant that:
+              </p>
+              <ul class="list-disc pl-5 space-y-2 text-sm sm:text-base">
+                <li>You are at least 18 years of age and possess full legal capacity to execute commercial contracts.</li>
+                <li>Your commercial entity is legitimately incorporated, registered with the Corporate Affairs Commission (CAC) or applicable national business registry where required, and in good legal standing.</li>
+                <li>Your enterprise possesses all required regulatory licenses, pharmacy permits, retail vendor authorizations, and tax compliance certificates necessary to conduct retail transactions in your jurisdiction.</li>
+                <li>You will not utilize SELL EVERYDAY to conduct transactions for prohibited, counterfeit, stolen, or illicit merchandise, or engage in money laundering or terrorist financing activities.</li>
+              </ul>
+            </div>
+          </section>
+
+          {/* Section 3 */}
+          <section id="services" class="scroll-mt-28 bg-white rounded-3xl p-8 sm:p-10 shadow-sm ring-1 ring-gray-900/5">
+            <h2 class="text-2xl font-bold text-gray-900 tracking-tight mb-4 flex items-center gap-3">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-100 text-blue-700 text-sm font-bold flex items-center justify-center">3</span>
+              Services Provided &amp; Dual Deployment Models
+            </h2>
+            <div class="space-y-4 text-sm sm:text-base leading-7">
+              <p>
+                SELL EVERYDAY is a comprehensive retail Point of Sale (POS) and inventory control management software platform engineered for modern commercial outlets, kiosks, multi-branch supermarkets, and pharmacies. The platform is offered through two primary deployment paradigms:
+              </p>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                <div class="p-5 rounded-2xl bg-gray-50 border border-gray-200">
+                  <h3 class="font-bold text-gray-900 text-base mb-2 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+                    Cloud Hosted (SaaS) Model
+                  </h3>
+                  <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                    A multi-tenant cloud-hosted subscription tier (Mini, Growth, Boss, Scale) where store backends, database backups, multi-branch master catalogs, and remote management dashboards are hosted on Everyday Intelligence cloud infrastructure, synchronizing with local terminal client applications.
+                  </p>
+                </div>
+                <div class="p-5 rounded-2xl bg-gray-50 border border-gray-200">
+                  <h3 class="font-bold text-gray-900 text-base mb-2 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-indigo-600"></span>
+                    In-Premise License Model
+                  </h3>
+                  <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                    A dedicated enterprise deployment where the database engine and primary server are deployed on the Merchant's local on-site physical hardware or private server network, subject to perpetual or recurring license validation.
+                  </p>
+                </div>
+              </div>
+
+              <p class="text-xs sm:text-sm text-gray-500 italic mt-2">
+                We reserve the right to modify, enhance, update, or deprecate specific non-core software features or peripheral integrations with prior notice to maintain security and software performance standards.
+              </p>
+            </div>
+          </section>
+
+          {/* Section 4 */}
+          <section id="account-security" class="scroll-mt-28 bg-white rounded-3xl p-8 sm:p-10 shadow-sm ring-1 ring-gray-900/5">
+            <h2 class="text-2xl font-bold text-gray-900 tracking-tight mb-4 flex items-center gap-3">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-100 text-blue-700 text-sm font-bold flex items-center justify-center">4</span>
+              Account Registration &amp; Staff Access Controls
+            </h2>
+            <div class="space-y-4 text-sm sm:text-base leading-7">
+              <p>
+                To utilize the system, you must register a master Merchant account. You agree to provide accurate, current, and complete business details, including legal business name, authorized administrative email address, verified telephone number, and store physical addresses.
+              </p>
+              
+              <h3 class="text-lg font-bold text-gray-900 pt-2">Role-Based Access Control (RBAC) &amp; Cashier Shifts</h3>
+              <p>
+                SELL EVERYDAY incorporates granular role-based security layers, allowing store owners to provision Cashier PINs, Shift Supervisor overrides, and Branch Manager access levels:
+              </p>
+              <ul class="list-disc pl-5 space-y-2 text-sm sm:text-base">
+                <li><strong>Merchant Responsibility:</strong> You are solely responsible for maintaining the confidentiality of master administrator credentials, API keys, and staff terminal PINs.</li>
+                <li><strong>Vicarious Operational Liability:</strong> Every transaction, price override, item discount, inventory adjustment, cash drawer opening, and receipt void recorded under an authorized user credential is conclusively deemed to have been authorized by the Merchant.</li>
+                <li><strong>Immediate Breach Notification:</strong> You must immediately notify our security response team at <a href="mailto:support@sell-everyday-pos.app" class="text-blue-600 font-semibold hover:underline">support@sell-everyday-pos.app</a> upon discovering or suspecting any unauthorized access, compromised cashier credentials, or lost merchant terminal devices.</li>
+              </ul>
+            </div>
+          </section>
+
+          {/* Section 5 */}
+          <section id="offline-sync" class="scroll-mt-28 bg-white rounded-3xl p-8 sm:p-10 shadow-sm ring-1 ring-gray-900/5">
+            <h2 class="text-2xl font-bold text-gray-900 tracking-tight mb-4 flex items-center gap-3">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-100 text-blue-700 text-sm font-bold flex items-center justify-center">5</span>
+              Offline-First Operations &amp; Synchronization Protocol
+            </h2>
+            <div class="space-y-4 text-sm sm:text-base leading-7">
+              <p>
+                SELL EVERYDAY is engineered with an advanced <strong>offline-first synchronization architecture</strong>. Client terminals cache product pricing, barcode indexes, customer debt balances, and pending sales orders locally, allowing checkouts to proceed uninterrupted during internet outages.
+              </p>
+
+              <div class="rounded-2xl border border-gray-200 p-5 bg-gray-50/80 space-y-3">
+                <h3 class="text-base font-bold text-gray-900 flex items-center gap-2">
+                  <svg class="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                  Crucial Merchant Synchronization Obligations
+                </h3>
+                <p class="text-xs sm:text-sm text-gray-700 leading-relaxed">
+                  While the software permits local offline operations, prolonged disconnections risk catalog divergence and stock discrepancies across branches. You explicitly agree to the following operational duties:
+                </p>
+                <ol class="list-decimal pl-5 space-y-2 text-xs sm:text-sm text-gray-700">
+                  <li><strong>Regular Sync Re-establishment:</strong> You must connect each offline terminal to an active internet network at least once every 24 hours to flush transaction queues to the cloud ledger.</li>
+                  <li><strong>Clock &amp; Timestamp Integrity:</strong> You must maintain accurate system date and time synchronization on all POS terminals. Manipulating hardware clocks or severe clock drift that causes timeline divergence voids any claims regarding ledger order disputes.</li>
+                  <li><strong>Prohibition of Premature Cache Purging:</strong> You must never clear terminal local storage, browser cache, or IndexedDB storage, nor format POS hardware, without first verifying that the local pending sync queue indicates zero (0) unsynced sales. Everyday Intelligence is not liable for data irrevocably erased from local device hardware prior to synchronization.</li>
+                  <li><strong>Deterministic Conflict Resolution:</strong> When multi-terminal conflicts occur (e.g. two terminals selling the exact final stock item while disconnected), the central cloud sync engine applies server timestamp sequencing and deterministic ledger reconciliation.</li>
+                </ol>
+              </div>
+            </div>
+          </section>
+
+          {/* Section 6 */}
+          <section id="hardware-network" class="scroll-mt-28 bg-white rounded-3xl p-8 sm:p-10 shadow-sm ring-1 ring-gray-900/5">
+            <h2 class="text-2xl font-bold text-gray-900 tracking-tight mb-4 flex items-center gap-3">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-100 text-blue-700 text-sm font-bold flex items-center justify-center">6</span>
+              Hardware, Peripherals &amp; Local Environment
+            </h2>
+            <div class="space-y-4 text-sm sm:text-base leading-7">
+              <p>
+                SELL EVERYDAY communicates with industry-standard POS hardware peripherals including 58mm/80mm ESC/POS thermal receipt printers, USB/Bluetooth handheld barcode scanners, electronic cash drawers, and customer-facing secondary displays.
+              </p>
+              <ul class="list-disc pl-5 space-y-2 text-sm sm:text-base">
+                <li><strong>Hardware Provisioning:</strong> Unless explicitly purchased as a certified turnkey hardware bundle directly from Everyday Intelligence, all terminal computers, Android tablets, barcode scanners, and receipt printers must be procured and maintained by the Merchant.</li>
+                <li><strong>Power Infrastructure &amp; Surge Protection:</strong> Retail environments frequently experience voltage fluctuations and power cuts. Merchants are strongly advised to deploy reliable Uninterruptible Power Supply (UPS) units on all cashier counters. We accept no liability for data corruption, hardware damage, or incomplete transactions caused by sudden power loss during write operations.</li>
+                <li><strong>Third-Party Peripheral Compatibility:</strong> While we adhere to open ESC/POS and standard HID scanner protocols, we do not warrant that all non-certified third-party printer drivers or counterfeit hardware will function flawlessly.</li>
+              </ul>
+            </div>
+          </section>
+
+          {/* Section 7 */}
+          <section id="billing-subscriptions" class="scroll-mt-28 bg-white rounded-3xl p-8 sm:p-10 shadow-sm ring-1 ring-gray-900/5">
+            <h2 class="text-2xl font-bold text-gray-900 tracking-tight mb-4 flex items-center gap-3">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-100 text-blue-700 text-sm font-bold flex items-center justify-center">7</span>
+              Subscriptions, In-Premise Fees &amp; Taxes
+            </h2>
+            <div class="space-y-4 text-sm sm:text-base leading-7">
+              <p>
+                Pricing for SELL EVERYDAY is structured based on selected plan tiers (e.g. Mini, Growth, Boss, Scale, Enterprise) and deployment method as published on our <a href="/pricing" class="text-blue-600 underline font-medium">Pricing Page</a>.
+              </p>
+              <ul class="list-disc pl-5 space-y-2 text-sm sm:text-base">
+                <li><strong>Prepaid Billing Cycles:</strong> SaaS subscriptions are billed in advance on either a monthly or annual recurring basis. Payment is processed in Nigerian Naira (₦) or the designated billing currency.</li>
+                <li><strong>Automatic Renewal:</strong> Unless cancelled prior to the conclusion of your active billing period, subscription plans automatically renew, and your designated payment method will be charged.</li>
+                <li><strong>In-Premise License Validation:</strong> In-premise enterprise licenses may require an annual software maintenance fee (SMA) or periodic digital license renewal to access major software version upgrades, regulatory tax updates, and priority tech support.</li>
+                <li><strong>Price Adjustments:</strong> Everyday Intelligence reserves the right to revise subscription fees upon providing at least thirty (30) days' prior written notice via email or in-app notification. Your continued subscription after the effective date confirms acceptance of updated fees.</li>
+                <li><strong>Taxes:</strong> Unless expressly stated otherwise, listed fees exclude applicable Value Added Tax (VAT), sales taxes, or regulatory levies. The Merchant is responsible for all statutory taxes applicable in their operating jurisdiction.</li>
+              </ul>
+            </div>
+          </section>
+
+          {/* Section 8 */}
+          <section id="trial-cancellation" class="scroll-mt-28 bg-white rounded-3xl p-8 sm:p-10 shadow-sm ring-1 ring-gray-900/5">
+            <h2 class="text-2xl font-bold text-gray-900 tracking-tight mb-4 flex items-center gap-3">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-100 text-blue-700 text-sm font-bold flex items-center justify-center">8</span>
+              Free Trials, Cancellations &amp; Refund Policy
+            </h2>
+            <div class="space-y-4 text-sm sm:text-base leading-7">
+              <h3 class="text-lg font-bold text-gray-900">14-Day Free Trial Policy</h3>
+              <p>
+                New merchants may access a fourteen (14) day evaluation trial without providing a credit card. At the conclusion of the 14-day trial, continued access to cloud syncing and administrative tools requires upgrading to a paid plan. If not upgraded, your account transitions to read-only status and will eventually be archived in accordance with our data retention schedule.
+              </p>
+
+              <h3 class="text-lg font-bold text-gray-900 pt-2">Subscription Cancellation &amp; Refund Rules</h3>
+              <ul class="list-disc pl-5 space-y-2 text-sm sm:text-base">
+                <li><strong>Merchant Cancellation:</strong> You may cancel your subscription at any time directly through the Admin Dashboard under <em>Settings &gt; Billing</em>. Cancellation takes effect at the end of the current pre-paid billing cycle.</li>
+                <li><strong>No Pro-Rated Refunds:</strong> Due to immediate provisioning of cloud infrastructure, database storage, and AI processing quotas, <strong>subscription payments are strictly non-refundable</strong>. We do not issue partial refunds for unused days in a billing cycle.</li>
+                <li><strong>In-Premise License Fees:</strong> One-time enterprise license fees, custom software modifications, and on-site deployment engineer charges are non-refundable once software keys have been issued or engineering implementation has commenced.</li>
+              </ul>
+            </div>
+          </section>
+
+          {/* Section 9 */}
+          <section id="merchant-data" class="scroll-mt-28 bg-white rounded-3xl p-8 sm:p-10 shadow-sm ring-1 ring-gray-900/5">
+            <h2 class="text-2xl font-bold text-gray-900 tracking-tight mb-4 flex items-center gap-3">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-100 text-blue-700 text-sm font-bold flex items-center justify-center">9</span>
+              Merchant Data Ownership &amp; Usage Rights
+            </h2>
+            <div class="space-y-4 text-sm sm:text-base leading-7">
+              <p>
+                <strong>You retain 100% full legal ownership of your Merchant Data.</strong> This includes product inventories, cost prices, retail sales invoices, customer credit ledgers, cashier shift logs, and branch performance metrics.
+              </p>
+              
+              <h3 class="text-lg font-bold text-gray-900 pt-2">Limited License to Everyday Intelligence</h3>
+              <p>
+                To provide the POS service, you grant Everyday Intelligence a strictly limited, non-exclusive, worldwide license to ingest, transmit, process, cache, replicate, and back up Merchant Data solely for the operational purposes of:
+              </p>
+              <ul class="list-disc pl-5 space-y-2 text-sm sm:text-base">
+                <li>Synchronizing sales and inventory status across your connected terminals and web dashboards.</li>
+                <li>Powering automated business health reports, inventory reorder alerts, and retail analytics.</li>
+                <li>Providing the AI business assistant features requested by you within the app.</li>
+              </ul>
+
+              <div class="p-4 rounded-xl bg-gray-50 border border-gray-200 text-xs sm:text-sm text-gray-600">
+                <strong>Anonymized Benchmark Telemetry:</strong> We may aggregate and anonymize high-level system usage statistics (e.g. transaction throughput latency, barcode scanning error frequencies) to improve system resilience. Such data contains zero personally identifiable information (PII) or customer records and cannot be reverse-engineered to identify your commercial entity.
+              </div>
+
+              <p>
+                For details on data deletion, please see our <a href="/delete-account" class="text-blue-600 font-semibold hover:underline">Account Deletion Instructions</a>.
+              </p>
+            </div>
+          </section>
+
+          {/* Section 10 */}
+          <section id="acceptable-use" class="scroll-mt-28 bg-white rounded-3xl p-8 sm:p-10 shadow-sm ring-1 ring-gray-900/5">
+            <h2 class="text-2xl font-bold text-gray-900 tracking-tight mb-4 flex items-center gap-3">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-100 text-blue-700 text-sm font-bold flex items-center justify-center">10</span>
+              Acceptable Use &amp; Prohibited Conduct
+            </h2>
+            <div class="space-y-4 text-sm sm:text-base leading-7">
+              <p>
+                You agree to utilize SELL EVERYDAY exclusively for legitimate business management purposes. You expressly agree that you will not, nor permit any third party or employee to:
+              </p>
+              <ul class="list-disc pl-5 space-y-2 text-sm sm:text-base">
+                <li>Reverse engineer, decompile, disassemble, or attempt to derive the source code, internal APIs, or synchronization algorithms of SELL EVERYDAY.</li>
+                <li>Bypass, alter, or circumvent any licensing keys, user limits, branch seat restrictions, or cryptographic sync authenticators.</li>
+                <li>Conduct automated scraping, penetration testing, fuzzing, or load testing against our cloud sync endpoints without prior written consent.</li>
+                <li>Use the platform to execute fraudulent payment simulations, record fictitious transactions to evade statutory taxes, or process transactions for narcotics, unregulated pharmaceuticals, or sanctioned entities.</li>
+                <li>Introduce viruses, trojans, ransomware, or malicious code into our software ecosystem.</li>
+              </ul>
+              <p class="text-xs sm:text-sm text-red-600 font-semibold">
+                Any violation of this section constitutes grounds for immediate suspension or termination of your account without notice or refund, and may result in legal referral to law enforcement authorities.
+              </p>
+            </div>
+          </section>
+
+          {/* Section 11 */}
+          <section id="intellectual-property" class="scroll-mt-28 bg-white rounded-3xl p-8 sm:p-10 shadow-sm ring-1 ring-gray-900/5">
+            <h2 class="text-2xl font-bold text-gray-900 tracking-tight mb-4 flex items-center gap-3">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-100 text-blue-700 text-sm font-bold flex items-center justify-center">11</span>
+              Intellectual Property &amp; License Grant
+            </h2>
+            <div class="space-y-4 text-sm sm:text-base leading-7">
+              <p>
+                All rights, title, and interest in and to SELL EVERYDAY—including but not limited to the desktop client application, Android packages, web applications, cloud sync services, graphical interfaces, user workflows, documentation, icons, brand names, and algorithms—are and remain the exclusive intellectual property of Everyday Intelligence Ltd. and its licensors.
+              </p>
+              <p>
+                Subject to your ongoing compliance with this Agreement and payment of applicable subscription or license fees, Everyday Intelligence grants you a revocable, non-exclusive, non-transferable, non-sublicensable limited license to install and operate the client software on the number of authorized branch terminals specified in your plan.
+              </p>
+            </div>
+          </section>
+
+          {/* Section 12 */}
+          <section id="sla-backups" class="scroll-mt-28 bg-white rounded-3xl p-8 sm:p-10 shadow-sm ring-1 ring-gray-900/5">
+            <h2 class="text-2xl font-bold text-gray-900 tracking-tight mb-4 flex items-center gap-3">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-100 text-blue-700 text-sm font-bold flex items-center justify-center">12</span>
+              Service Availability, Maintenance &amp; Data Retention
+            </h2>
+            <div class="space-y-4 text-sm sm:text-base leading-7">
+              <h3 class="text-lg font-bold text-gray-900">Uptime &amp; Offline Autonomy</h3>
+              <p>
+                Everyday Intelligence targets a 99.9% uptime availability for our central cloud synchronization servers. Because the client application possesses full offline checkout capabilities, a temporary disruption to cloud servers does not prevent you from scanning items, printing receipts, or recording cash and card sales locally.
+              </p>
+
+              <h3 class="text-lg font-bold text-gray-900 pt-2">Maintenance Windows</h3>
+              <p>
+                Routine system maintenance and infrastructure upgrades are scheduled during off-peak commercial hours (typically between 12:00 AM and 04:00 AM West Africa Time) with advance notification wherever feasible.
+              </p>
+
+              <h3 class="text-lg font-bold text-gray-900 pt-2">Post-Termination Data Retention</h3>
+              <p>
+                Following account cancellation or expiration, we retain your data in encrypted backups for thirty (30) calendar days to permit export or reactivations. After this 30-day grace period, merchant data is purged from our production databases, except where retention is mandated by financial auditing laws.
+              </p>
+            </div>
+          </section>
+
+          {/* Section 13 */}
+          <section id="disclaimers-liability" class="scroll-mt-28 bg-white rounded-3xl p-8 sm:p-10 shadow-sm ring-1 ring-gray-900/5">
+            <h2 class="text-2xl font-bold text-gray-900 tracking-tight mb-4 flex items-center gap-3">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-100 text-blue-700 text-sm font-bold flex items-center justify-center">13</span>
+              Disclaimer of Warranties &amp; Liability Caps
+            </h2>
+            <div class="space-y-4 text-sm sm:text-base leading-7">
+              <div class="p-5 rounded-2xl bg-gray-100 border border-gray-300 text-gray-800 text-xs sm:text-sm font-mono leading-relaxed uppercase">
+                Except as expressly provided herein, the software, cloud synchronization, APIs, and documentation are provided "AS IS" and "AS AVAILABLE" without warranties of any kind, whether express, statutory, or implied, including but not limited to the implied warranties of merchantability, fitness for a particular purpose, and non-infringement.
+              </div>
+
+              <h3 class="text-lg font-bold text-gray-900 pt-2">Explicit Disclaimers</h3>
+              <p>Everyday Intelligence expressly disclaims liability for:</p>
+              <ul class="list-disc pl-5 space-y-2 text-sm sm:text-base">
+                <li><strong>Cashier &amp; Staff Negligence:</strong> Discrepancies arising from operator calculation errors, unauthorized till discounts, cash shortfalls, or erroneous manual barcode overrides.</li>
+                <li><strong>Physical Inventory Shrinkage:</strong> Physical shoplifting, internal staff theft, stock spoilage, or breakage within your retail locations.</li>
+                <li><strong>Terminal Hardware Destruction:</strong> Permanent loss of unsynced transactions resulting from physical destruction, theft, water damage, or electrical failure of local POS terminals.</li>
+                <li><strong>Telecommunications &amp; Grid Outages:</strong> Disruptions or latency originating from national electrical grid collapse or third-party internet service provider (ISP) blackouts.</li>
+              </ul>
+
+              <h3 class="text-lg font-bold text-gray-900 pt-2">Limitation of Aggregate Monetary Liability</h3>
+              <p>
+                To the maximum extent permitted by applicable law, in no event shall Everyday Intelligence Ltd., its directors, officers, employees, or affiliates be liable for any indirect, punitive, incidental, special, consequential, or exemplary damages, including damages for loss of profits, goodwill, business interruption, or data loss.
+              </p>
+              <p>
+                In any scenario, our total aggregate monetary liability arising out of or related to this Agreement or the use of SELL EVERYDAY shall be strictly capped at the <strong>total subscription or license fees actually paid by you to Everyday Intelligence in the twelve (12) months immediately preceding the event giving rise to liability</strong>.
+              </p>
+            </div>
+          </section>
+
+          {/* Section 14 */}
+          <section id="indemnification" class="scroll-mt-28 bg-white rounded-3xl p-8 sm:p-10 shadow-sm ring-1 ring-gray-900/5">
+            <h2 class="text-2xl font-bold text-gray-900 tracking-tight mb-4 flex items-center gap-3">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-100 text-blue-700 text-sm font-bold flex items-center justify-center">14</span>
+              Merchant Indemnification
+            </h2>
+            <div class="space-y-4 text-sm sm:text-base leading-7">
+              <p>
+                You agree to defend, indemnify, and hold harmless Everyday Intelligence Ltd., its subsidiaries, officers, directors, employees, contractors, and agents from and against any third-party claims, liabilities, damages, judgments, losses, costs, or expenses (including reasonable legal and accounting fees) arising out of or related to:
+              </p>
+              <ul class="list-disc pl-5 space-y-2 text-sm sm:text-base">
+                <li>Your commercial operation of your retail business, supermarket, pharmacy, or kiosk.</li>
+                <li>Any dispute between you and your retail customers, shoppers, staff employees, or suppliers.</li>
+                <li>The sale, pricing, dispensing, or recall of any goods, pharmaceuticals, or merchandise sold through your POS terminals.</li>
+                <li>Your violation of any applicable retail laws, tax statutes, pharmaceutical regulations, or privacy rights.</li>
+                <li>Any breach by you of these Terms or misuse of user credentials.</li>
+              </ul>
+            </div>
+          </section>
+
+          {/* Section 15 */}
+          <section id="governing-law" class="scroll-mt-28 bg-white rounded-3xl p-8 sm:p-10 shadow-sm ring-1 ring-gray-900/5">
+            <h2 class="text-2xl font-bold text-gray-900 tracking-tight mb-4 flex items-center gap-3">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-100 text-blue-700 text-sm font-bold flex items-center justify-center">15</span>
+              Governing Law &amp; Dispute Resolution
+            </h2>
+            <div class="space-y-4 text-sm sm:text-base leading-7">
+              <p>
+                This Agreement shall be governed by, construed, and enforced in accordance with the laws of the <strong>Federal Republic of Nigeria</strong>, without regard to its conflict of law principles.
+              </p>
+              
+              <h3 class="text-lg font-bold text-gray-900 pt-2">Amicable Resolution &amp; Arbitration</h3>
+              <ol class="list-decimal pl-5 space-y-3 text-sm sm:text-base">
+                <li><strong>Informal Negotiation:</strong> In the event of any dispute, claim, or controversy arising out of or relating to this Agreement, the parties shall first attempt in good faith to resolve the matter through informal written negotiations for a mandatory period of thirty (30) days from written notice of the dispute.</li>
+                <li><strong>Binding Commercial Arbitration:</strong> If the dispute cannot be amicably resolved within 30 days, it shall be finally settled under the Arbitration and Mediation Act (or applicable arbitration rules in Nigeria) by a single arbitrator appointed in accordance with said rules. The arbitration proceedings shall be conducted in English in Lagos, Nigeria.</li>
+                <li><strong>Injunctive Relief:</strong> Notwithstanding the foregoing, either party reserves the right to seek interim injunctive relief from any court of competent jurisdiction to safeguard intellectual property rights or trade secrets pending arbitral outcome.</li>
+              </ol>
+            </div>
+          </section>
+
+          {/* Section 16 */}
+          <section id="modifications-contact" class="scroll-mt-28 bg-white rounded-3xl p-8 sm:p-10 shadow-sm ring-1 ring-gray-900/5">
+            <h2 class="text-2xl font-bold text-gray-900 tracking-tight mb-4 flex items-center gap-3">
+              <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-100 text-blue-700 text-sm font-bold flex items-center justify-center">16</span>
+              Modifications &amp; Contact Information
+            </h2>
+            <div class="space-y-4 text-sm sm:text-base leading-7">
+              <p>
+                We may periodically update these Terms to reflect technical enhancements, architectural updates, statutory legal changes, or new product features. When changes are made, we will revise the "Last Updated" date at the top of this document and notify active subscribers via an in-app dashboard banner or direct email notice. Your continued use of the system thirty (30) days following such publication constitutes binding acceptance of the updated terms.
+              </p>
+              
+              <div class="mt-6 rounded-2xl bg-gray-50 border border-gray-200 p-6 sm:p-8">
+                <h3 class="text-lg font-bold text-gray-900 mb-2">Legal, Billing &amp; Compliance Inquiries</h3>
+                <p class="text-sm text-gray-600 mb-6">
+                  If you have questions regarding these Terms of Service, software licenses, or enterprise agreements, please contact our legal and support team:
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                  <div class="p-4 rounded-xl bg-white border border-gray-100 shadow-sm">
+                    <span class="text-xs text-gray-400 font-semibold uppercase block mb-1">Customer &amp; Technical Support</span>
+                    <a href="mailto:support@sell-everyday-pos.app" class="font-bold text-blue-600 hover:underline">support@sell-everyday-pos.app</a>
+                  </div>
+                  <div class="p-4 rounded-xl bg-white border border-gray-100 shadow-sm">
+                    <span class="text-xs text-gray-400 font-semibold uppercase block mb-1">Enterprise Licensing &amp; Sales</span>
+                    <a href="mailto:sales@sell-everyday-pos.app" class="font-bold text-blue-600 hover:underline">sales@sell-everyday-pos.app</a>
+                  </div>
+                  <div class="p-4 rounded-xl bg-white border border-gray-100 shadow-sm">
+                    <span class="text-xs text-gray-400 font-semibold uppercase block mb-1">Direct Phone Line</span>
+                    <a href="tel:+2348100053846" class="font-bold text-gray-900 hover:text-blue-600">+234 81000 53846</a>
+                  </div>
+                  <div class="p-4 rounded-xl bg-white border border-gray-100 shadow-sm">
+                    <span class="text-xs text-gray-400 font-semibold uppercase block mb-1">Corporate Entity</span>
+                    <span class="font-bold text-gray-900">Everyday Intelligence Ltd.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Quick Action Navigation at bottom */}
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-6 rounded-2xl bg-white border border-gray-200">
+            <div>
+              <p class="text-sm font-semibold text-gray-900">Have questions about your data privacy?</p>
+              <p class="text-xs text-gray-500">Read our clear guidelines on data encryption and data storage.</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <a href="/privacy" class="px-4 py-2 text-xs sm:text-sm font-bold text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+                View Privacy Policy &rarr;
+              </a>
+              <a href="/contact" class="px-4 py-2 text-xs sm:text-sm font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-500 transition-colors">
+                Contact Legal
+              </a>
+            </div>
+          </div>
+
+        </article>
+
+        {/* Desktop Sticky Table of Contents Sidebar */}
+        <aside class="hidden lg:block lg:col-span-4">
+          <div class="sticky top-28 space-y-6">
+            
+            {/* Table of Contents Card */}
+            <div class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-gray-900/5">
+              <h3 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-4 flex items-center justify-between">
+                <span>On this page</span>
+                <span class="text-[10px] text-blue-600 font-semibold">16 Clauses</span>
+              </h3>
+              <nav class="space-y-1.5 max-h-[calc(100vh-22rem)] overflow-y-auto pr-2 text-xs scrollbar-thin scrollbar-thumb-gray-200" aria-label="Table of contents">
+                {sections.map((item) => (
+                  <a
+                    href={`#${item.id}`}
+                    class="block px-2.5 py-1.5 rounded-lg text-gray-600 hover:text-blue-600 hover:bg-blue-50/60 font-medium transition-all duration-150 leading-snug"
+                  >
+                    {item.title}
+                  </a>
+                ))}
+              </nav>
+            </div>
+
+            {/* Quick Contact Card */}
+            <div class="rounded-3xl bg-gradient-to-br from-blue-900 to-indigo-950 p-6 text-white shadow-md">
+              <h4 class="text-sm font-bold tracking-tight mb-2">Need a Custom Enterprise SLA?</h4>
+              <p class="text-xs text-blue-200 leading-relaxed mb-4">
+                We provide tailored on-premise service level agreements, dedicated uptime guarantees, and on-site engineering for large retail chains.
+              </p>
+              <a
+                href="/contact"
+                class="inline-block w-full text-center py-2 px-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition-all shadow-md shadow-blue-600/30"
+              >
+                Request Enterprise Terms
+              </a>
+            </div>
+
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </div>
+</BaseLayout>
